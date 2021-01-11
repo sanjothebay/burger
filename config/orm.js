@@ -2,58 +2,54 @@
 var connection = require("../config/connection.js");
 
 function printQuestionMarks() {
-    var arr = [];
-    for (let i = 0; i < num; i++) {
-        arr.push("?");
-    }
-    return arr.toString();
+  var arr = [];
+  for (let i = 0; i < num; i++) {
+    arr.push("?");
+  }
+  return arr.toString();
 }
 
 function objToSql() {
-    var arr = [];
+  var arr = [];
 
-    for (var key in object) {
-        var value = object[key];
-        if (Object.hasOwnProperty.call(object, key)) {
-            if (typeof value === "string" && value.indexOf(" ")>= 0) {
-                value = "'" + value + "'";               
-            }
-            arr.push(key + "=" + value,)
-        }
+  for (var key in object) {
+    var value = object[key];
+    if (Object.hasOwnProperty.call(object, key)) {
+      if (typeof value === "string" && value.indexOf(" ") >= 0) {
+        value = "'" + value + "'";
+      }
+      arr.push(key + "=" + value);
     }
-    return arr.toString();
+  }
+  return arr.toString();
 }
 
-
 var orm = {
-
-selectAll: (tableInput, cb ) => {
+  selectAll: (tableInput, cb) => {
     var queryString = `SELECT * FROM ${tableInput}`;
-    connection.query(queryString, (err,result) => {
-        if (err) {
-            throw err;
-        }
-        cb(result);
+    connection.query(queryString, (err, result) => {
+      if (err) {
+        throw err;
+      }
+      cb(result);
     });
-},
+  },
 
+  insertOne: (table, cols, vals, cb) => {
+    var queryString = `INSERT INTO ${table} (${col}.toString()) VALUES (printQuestionMarks(${vals}.length))`;
+    console.log(queryString);
 
- insertOne: (table, cols, vals,cb) =>{
-     var queryString = `INSERT INTO ${table} (${col}.toString()) VALUES (printQuestionMarks(${vals}.length))`;
-     console.log(queryString);
+    connection.query(queryString, vals, function (err, result) {
+      if (err) {
+        throw err;
+      }
 
-     connection.query(queryString, vals, function(err, result) {
-       if (err) {
-         throw err;
-       }
- 
-       cb(result);
-     });
- },
+      cb(result);
+    });
+  },
 
-
- updateOne: (table, objColVals, condition, cb) => {
-    var queryString = `UPDATE ${table} SET ${objColVals} WHERE ${condition}`
+  updateOne: (table, objColVals, condition, cb) => {
+    var queryString = `UPDATE ${table} SET ${objColVals} WHERE ${condition}`;
     console.log(queryString);
     connection.query(queryString, function (err, result) {
       if (err) {
@@ -61,9 +57,9 @@ selectAll: (tableInput, cb ) => {
       }
       cb(result);
     });
- },
+  },
 
- delete: (table, id, cb) => {
+  delete: (table, id, cb) => {
     const queryString = `DELETE FROME ${table} WHERE id = ${id}`;
     connection.query(queryString, function (err, result) {
       if (err) {
@@ -71,9 +67,7 @@ selectAll: (tableInput, cb ) => {
       }
     });
   },
-
 };
-
 
 // Export the orm object for the model (cat.js).
 module.exports = orm;
