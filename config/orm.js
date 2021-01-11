@@ -1,6 +1,29 @@
 // Import MySQL connection.
 var connection = require("../config/connection.js");
 
+printQuestionMarks() => {
+    var arr = [];
+    for (let i = 0; i < num; i++) {
+        arr.push("?");
+    }
+    return arr.toString();
+}
+
+objToSql() => {
+    var arr = [];
+
+    for (var key in object) {
+        var value = object[key];
+        if (Object.hasOwnProperty.call(object, key)) {
+            if (typeof value === "string" && value.indexOf(" ")>= 0) {
+                value = "'" + value + "'";               
+            }
+            arr.push(key + "=" + value,)
+        }
+    }
+    return arr.toString();
+}
+
 
 var orm = {
 
@@ -15,11 +38,30 @@ selectAll: (tableInput, cb ) => {
 },
 
 
-// insertOne()
+ insertOne: (table, cols, vals,cb) =>{
+     var queryString = `INSERT INTO ${table}`
+ },
 
 
-// updateOne()
+ updateOne: (table, objColVals, condition, cb) => {
+    var queryString = `UPDATE ${table} SET ${objColVals} WHERE ${condition}`
+    console.log(queryString);
+    connection.query(queryString, function (err, result) {
+      if (err) {
+        throw err;
+      }
+      cb(result);
+    });
+ },
 
+ delete: (table, id, cb) => {
+    const queryString = `DELETE FROME ${table} WHERE id = ${id}`;
+    connection.query(queryString, function (err, result) {
+      if (err) {
+        throw err;
+      }
+    });
+  },
 
 };
 
