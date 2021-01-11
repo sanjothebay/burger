@@ -15,10 +15,10 @@ selectAll: (tableInput, cb ) => {
 },
 
 
-insertOne()
+// insertOne()
 
 
-updateOne()
+// updateOne()
 
 
 };
