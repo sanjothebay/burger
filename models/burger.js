@@ -17,7 +17,12 @@ var burger = {
       cb(res);
     });
   },
-};
 
+  deleteOne: (id, cb) => {
+    orm.deleteOne("burger", id, (res) => {
+      cb(res);
+    });
+  },
+};
 // Export the database functions for the controller (burgersController.js).
 module.exports = burger;
