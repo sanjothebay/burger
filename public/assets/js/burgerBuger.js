@@ -30,5 +30,12 @@ $(function () {
       name: $("#bu").val().trim(),
       devoureded: $("[name=devoureded]:checked").val().trim(),
     };
+
+    $.ajax("/api/burgers", {
+      type: "POST",
+      data: newBurger,
+    }).then(function () {
+      location.reload();
+    });
   });
 });
