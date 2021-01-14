@@ -14,6 +14,21 @@ $(function () {
     });
   });
 
+  $("delete-burger").on("click", function (event) {
+    const id = $(event.target).data("id");
+    $.ajax("/api/burgers/" + id, {
+      type: "DELETE",
+    }).then(function () {
+      location.reload();
+    });
+  });
 
+  $(".create-form").on("submit", function (event) {
+    event.preventDefault();
 
+    var newBurger = {
+      name: $("#bu").val().trim(),
+      devoureded: $("[name=devoureded]:checked").val().trim(),
+    };
+  });
 });
