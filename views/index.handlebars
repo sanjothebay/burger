@@ -1,7 +1,20 @@
-<h1>Cats!</h1>
+<h1>Burgers!</h1>
 
-<h2>Cats that are not sleepy!</h2>
+<h2>Burgers that have not devoured!</h2>
 
 <ul>
-    {{#each}}
+    {{#each burgers}}
+    {{#unless devoured}}
+    {{/unless}}
+    {{/each}}
+</ul>
+
+<h2>Burgers that have been devoured!</h2>
+
+<ul>
+    {{#each burgers}}
+    {{#if devoured}}
+    {{> burgers/burger-block devoured=false}}
+    {{/if}}
+    {{/each}}
 </ul>
