@@ -2,7 +2,7 @@ var express = require("express");
 var router = express.Router();
 var burger = require("../models/burger.js");
 
-router.get("/", (req, res) => {
+router.get("/", function (req, res) {
   burger.selectAll((data) => {
     var hbsObject = {
       burgers: data,
@@ -11,7 +11,7 @@ router.get("/", (req, res) => {
   });
 });
 
-router.post("/api/burgers", (req, res) => {
+router.post("/api/burgers", function (req, res) {
   burger.insertOne(
     ["name", "devoured"],
     [req.body.name, req.body.devoured],
@@ -21,7 +21,7 @@ router.post("/api/burgers", (req, res) => {
   );
 });
 
-router.put("api/burgers/:id", (req, res) => {
+router.put("api/burgers/:id", function (req, res) {
   var condition = "id =" + req.params.id;
 
   burger.updateOne(
@@ -29,7 +29,7 @@ router.put("api/burgers/:id", (req, res) => {
       devoured: req.body.devoured,
     },
     condition,
-    (result) => {
+    function (result) {
       if (result.changedRows == 0) {
         return res.status(404).end();
       } else {
@@ -42,7 +42,7 @@ router.put("api/burgers/:id", (req, res) => {
 router.delete("/api/burgers/", function (req, res) {
   const id = req.params.id;
   cat.delete(id, function (results) {
-    if (result.affectedRows == 0) {
+    if (results.affectedRows == 0) {
       // If no rows were changed, then the ID must not exist, so 404
       return res.status(404).end();
     }
