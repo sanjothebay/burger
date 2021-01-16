@@ -3,6 +3,7 @@
 <h2>Burgers that have not devoured!</h2>
 
 <ul>
+    
     {{#each burgers}}
     {{#unless devoured}}
     {{> burgers/burger-block devoured=true}}
@@ -24,7 +25,8 @@
 
 <form class="create-form">
     <div class="form-group">
-        <input type="text" id="burgers" name="name">
+        <label for="addburg">Burger Name:</label>
+        <input type="text" id="addburg" name="name">
     </div>
 
     {{!-- <div class="form-group">
@@ -34,6 +36,6 @@
     </div> --}}
 
 
-    <button type="submit"> ubmit </button>
+    <button type="submit"> Submit </button>
 
 </form>
