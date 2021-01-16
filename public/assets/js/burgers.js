@@ -1,9 +1,9 @@
 $(function () {
   $(".change-devoured").on("click", function (event) {
     var id = $(this).data("id");
-    var newBurger = $(this).data("newBurger");
+    var newDevoured = $(this).data("newBurger");
     var newdevoured = {
-      devoureded: newBurger,
+      devoureded: newDevoured,
     };
 
     $.ajax("/api/burgers/" + id, {

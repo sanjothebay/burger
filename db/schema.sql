@@ -1,8 +1,8 @@
 ### Schema
 
-DROP DATABASE IF EXISTS b5055f8dmsq78w83;
-CREATE DATABASE b5055f8dmsq78w83;
-USE b5055f8dmsq78w83;
+DROP DATABASE IF EXISTS burgers_db;
+CREATE DATABASE burgers_db;
+USE burgers_db;
 
 CREATE TABLE burgers ( 
     id int NOT NULL AUTO_INCREMENT,
