@@ -36,8 +36,9 @@ var orm = {
   },
 
   insertOne: (table, cols, vals, cb) => {
-    var printQuestionMarksFunction = printQuestionMarks();
-    var queryString = `INSERT INTO ${table} (${cols.toString()}) VALUES (${printQuestionMarksFunction}(${vals}.length))`;
+    //var printQuestionMarksFunction = printQuestionMarks();
+    var numQuestionMarks = vals.length;
+    var queryString = `INSERT INTO ${table} (${cols.toString()}) VALUES (${printQuestionMarks(numQuestionMarks)})`;
     console.log(queryString);
 
     connection.query(queryString, vals, function (err, result) {
