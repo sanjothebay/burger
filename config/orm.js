@@ -36,7 +36,8 @@ var orm = {
   },
 
   insertOne: (table, cols, vals, cb) => {
-    var queryString = `INSERT INTO ${table} (${cols}.toString()) VALUES (${printQuestionMarks}(${vals}.length))`;
+    var printQuestionMarksFunction = printQuestionMarks();
+    var queryString = `INSERT INTO ${table} (${cols.toString()}) VALUES (${printQuestionMarksFunction}(${vals}.length))`;
     console.log(queryString);
 
     connection.query(queryString, vals, function (err, result) {
@@ -49,7 +50,7 @@ var orm = {
   },
 
   updateOne: (table, objColVals, condition, cb) => {
-    var queryString = `UPDATE ${table} SET ${objToSql}(${objColVals}) WHERE ${condition}`
+    var queryString = `UPDATE ${table} SET ${objToSql}(${objColVals}) WHERE ${condition}`;
     console.log(queryString);
     connection.query(queryString, function (err, result) {
       if (err) {
