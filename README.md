@@ -4,6 +4,7 @@ https://github.com/sanjothebay/burger
 
 https://sanjothebay.github.io/burger/
 
+![image](https://user-images.githubusercontent.com/67298961/104831605-28cbb980-5850-11eb-9000-1dd2facaad17.png)
 
 # Table of contents
 
@@ -179,6 +180,9 @@ All the recommended files and directories from the steps above should look like 
            └── burger-block.handlebars
     
 ```
+
+![image](https://user-images.githubusercontent.com/67298961/104831642-6b8d9180-5850-11eb-8c8d-60d25661d7dc.png)
+
 
 
 ### Tables <a name="Tables"></a>
