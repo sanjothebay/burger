@@ -1,0 +1,37 @@
+body {
+  padding: 8%;
+  background-image: url("https://ih1.redbubble.net/image.1004565551.8368/flat,750x,075,f-pad,750x1000,f8f8f8.jpg");
+}
+li {
+  padding-left: 40%;
+  margin: 5px;
+  background: yellow;
+}
+li button{
+  margin-left: 5%;
+}
+
+.label {
+  font-weight: bold;
+}
+
+.create-update-form {
+  padding: 5px;
+  margin: 5px;
+  background: teal;
+}
+
+.form-group {
+  margin-bottom: 5px;
+  padding-left: 40%;
+}
+button {
+  margin-left: 40%;
+}
+
+h1  {
+  margin-left: 40%;
+}
+h2  {
+  margin-left: 40%;
+}
