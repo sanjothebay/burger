@@ -1,11 +1,11 @@
 $(function () {
   $(".change-devoured").on("click", function (event) {
     var id = $(this).data("id");
-    var newDevoured = $(this).data("newburger");
+    var newDevoured = $(this).data("newdevoured");
 
     var gotdevoured = {
      objColVals: "devoured",
-     setValue: "1",
+     setValue: newDevoured ? "1" : "0",
     };
 
     $.ajax("/api/burgers/" + id, {
