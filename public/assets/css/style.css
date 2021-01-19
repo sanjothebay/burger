@@ -14,7 +14,9 @@ li button{
 .label {
   font-weight: bold;
 }
-
+img{
+  margin-left: 25%;
+}
 .create-update-form {
   padding: 5px;
   margin: 5px;
