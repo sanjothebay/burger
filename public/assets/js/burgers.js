@@ -32,12 +32,12 @@ $(function () {
     });
   });
 
-  //   $("delete-burger").on("click", function (event) {
-  //     const id = $(event.target).data("id");
-  //     $.ajax("/api/burgers/" + id, {
-  //       type: "DELETE",
-  //     }).then(function () {
-  //       location.reload();
-  //     });
-  //   });
+    $("delete-burger").on("click", function (event) {
+      const id = $(event.target).data("id");
+      $.ajax("/api/burgers/" + id, {
+        type: "DELETE",
+      }).then(function () {
+        location.reload();
+      });
+    });
 });
