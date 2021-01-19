@@ -3,13 +3,14 @@ $(function () {
     var id = $(this).data("id");
     var newDevoured = $(this).data("newburger");
 
-    var newdevoured = {
-      devoureded: newDevoured,
+    var gotdevoured = {
+     objColVals: "devoured",
+     setValue: "1",
     };
 
     $.ajax("/api/burgers/" + id, {
       type: "PUT",
-      data: newdevoured,
+      data: gotdevoured,
     }).then(function () {
       location.reload();
     });

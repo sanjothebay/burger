@@ -50,8 +50,9 @@ var orm = {
     });
   },
 
-  updateOne: (table, objColVals, condition, cb) => {
-    var queryString = `UPDATE ${table} SET ${objToSql}(${objColVals}) WHERE ${condition}`;
+  updateOne: (table, objColVals, setValue, condition, cb) => {
+
+    var queryString = `UPDATE ${table} SET ${objColVals} = ${setValue} WHERE ${condition}`;
     console.log(queryString);
     connection.query(queryString, function (err, result) {
       if (err) {
