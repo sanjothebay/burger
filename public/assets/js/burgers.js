@@ -4,8 +4,8 @@ $(function () {
     var newDevoured = $(this).data("newdevoured");
 
     var gotdevoured = {
-     objColVals: "devoured",
-     setValue: newDevoured ? "1" : "0",
+      objColVals: "devoured",
+      setValue: newDevoured ? "1" : "0",
     };
 
     $.ajax("/api/burgers/" + id, {
@@ -32,12 +32,12 @@ $(function () {
     });
   });
 
-    $("delete-burger").on("click", function (event) {
-      const id = $(event.target).data("id");
-      $.ajax("/api/burgers/" + id, {
-        type: "DELETE",
-      }).then(function () {
-        location.reload();
-      });
+  $(".delete-burger").on("click", function (event) {
+    const id = $(event.target).data("id");
+    $.ajax("/api/burgers/" + id, {
+      type: "DELETE",
+    }).then(function () {
+      location.reload();
     });
+  });
 });

@@ -42,9 +42,9 @@ router.put("/api/burgers/:id", function (req, res) {
   );
 });
 
-router.delete("/api/burgers/", function (req, res) {
+router.delete("/api/burgers/:id", function (req, res) {
   const id = req.params.id;
-  cat.delete(id, function (results) {
+  burger.deleteOne(id, function (results) {
     if (results.affectedRows == 0) {
       // If no rows were changed, then the ID must not exist, so 404
       return res.status(404).end();

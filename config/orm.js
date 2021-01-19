@@ -63,11 +63,12 @@ var orm = {
   },
 
   deleteOne: (table, id, cb) => {
-    const queryString = `DELETE FROME ${table} WHERE id = ${id}`;
+    const queryString = `DELETE FROM ${table} WHERE id = ${id}`;
     connection.query(queryString, function (err, result) {
       if (err) {
         throw err;
       }
+      cb(result);
     });
   },
 };
